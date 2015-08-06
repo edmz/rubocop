@@ -14,7 +14,7 @@ module RuboCop
       class FormatParameterMismatch < Cop
         # http://rubular.com/r/HdWs2uXZv4
         MSG = 'Number arguments (%i) to `%s` mismatches expected fields (%i).'
-        FIELDS_REGEX = /%([\s#+-0\*])?([0-9]*)?(.[0-9]+)?[bBdiouxXeEfgGacps]/
+        FIELDS_REGEX = /%([\s#+-0\*])?([0-9]*)?(.[0-9]+)?[bBdiouxXeEfgGaAcps]/
 
         def fields_regex
           FIELDS_REGEX
