@@ -42,8 +42,14 @@ module RuboCop
             number_of_args_for_format = (args.size - 1)
             number_of_expected_fields = expected_fields(args.first).size
           elsif percent?(node)
-            number_of_args_for_format = args.first.child_nodes.size
-            number_of_expected_fields = expected_fields(receiver_node).size
+            first_child_argument = args.first
+            if :array == first_child_argument.type
+              number_of_args_for_format = args.first.child_nodes.size
+              number_of_expected_fields = expected_fields(receiver_node).size
+            else
+              number_of_args_for_format = 1
+              number_of_expected_fields = expected_fields(receiver_node).size
+            end
           end
 
           [number_of_args_for_format, number_of_expected_fields]
